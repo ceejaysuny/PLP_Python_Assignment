@@ -1,13 +1,13 @@
 
-
 def file_read_write():
     try:
         # Ask the user for the input filename
         input_file = input("Enter the name of the file to read: ")
         
         # Try opening the file for reading
-        with open(input_file, 'r') as file:
-            content = file.readlines()
+        file = open(input_file, 'r')
+        content = file.readlines()
+        file.close()
         
         # Modify the content (for example, add line numbers)
         modified_content = [f"{i + 1}: {line}" for i, line in enumerate(content)]
@@ -16,8 +16,9 @@ def file_read_write():
         output_file = input("Enter the name of the file to write the modified content: ")
         
         # Write the modified content to a new file
-        with open(output_file, 'w') as file:
-            file.writelines(modified_content)
+        file = open(output_file, 'w')
+        file.writelines(modified_content)
+        file.close()
         
         print(f"Modified content has been written to '{output_file}' successfully.")
     
